@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="controller.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+	<h1>Investment Simulation</h1>
+	Investment amount: <input type="number" ng-model="payment">
+	<br /><br />
+	Davenport rate: <input type="number" ng-model="davenportRate">
+	American rate: <input type="number" ng-model="americanRate">
+	Vanguard rate: <input type="number" ng-model="vanguardRate">
+	<br /><br />
+ 	<table ng-table="simTable">
+	<tr>
+		<th>Year</th>
+		<th>Amount Invested</th>
+		<th>Davenport Value</th>
+		<th>Davenport Fee</th>
+		<th>American Value</th>
+		<th>American Fee</th>
+		<th>Vanguard Value</th>
+		<th>Vanguard Fee</th>
+	</tr>
+	<tr ng-repeat="year in years">
+		<th>{{year}}</th>
+		<th>{{payment}}</th>
+		<th>{{getDavenportTotal(year)}}</th>
+		<th>{{getDavenportFee(year)}}</th>
+		<th>{{getAmericanTotal(year)}}</th>
+		<th>{{getAmericanFee(year)}}</th>
+		<th>{{getVanguardTotal(year)}}</th>
+		<th>20.00</th>
+	</tr>
+	</table>
+</div>
+
+</body>
+<style>
+table, th , td {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+</style>
+</html>
